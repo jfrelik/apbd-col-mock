@@ -2,7 +2,7 @@ namespace mock.Prescription;
 
 public interface IPrescriptionService
 {
-    Task<List<Prescription>> GetPrescriptions(String? doctorName);
+    Task<List<PrescriptionWithNames>> GetPrescriptions(String? doctorName);
     
     Task<PrescriptionWithIDs> AddPrescription(PrescriptionWithIDs prescription);
 }

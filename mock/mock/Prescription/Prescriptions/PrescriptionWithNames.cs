@@ -1,6 +1,6 @@
 namespace mock.Prescription;
 
-public class Prescription
+public class PrescriptionWithNames
 {
     public int IdPrescription { get; set; }
     public DateTime Date { get; set; }

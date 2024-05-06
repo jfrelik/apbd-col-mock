@@ -11,7 +11,7 @@ public class PrescriptionService : IPrescriptionService
         _configuration = configuration;
     }
 
-    public async Task<List<Prescription>> GetPrescriptions(String? doctorName)
+    public async Task<List<PrescriptionWithNames>> GetPrescriptions(String? doctorName)
     {
         await using var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
         await connection.OpenAsync();
@@ -29,11 +29,11 @@ public class PrescriptionService : IPrescriptionService
         command.CommandText += " order by Date desc";
 
         var reader = await command.ExecuteReaderAsync();
-        var prescriptions = new List<Prescription>();
+        var prescriptions = new List<PrescriptionWithNames>();
 
         while (await reader.ReadAsync())
         {
-            var prescription = new Prescription
+            var prescription = new PrescriptionWithNames
             {
                 IdPrescription = reader.GetInt32(0),
                 Date = reader.GetDateTime(1),
