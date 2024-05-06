@@ -13,8 +13,15 @@ public static class Configuration
 
         app.MapPost("api/prescriptions", async (IPrescriptionService service, PrescriptionWithIDs presc) =>
         {
+            try
+            {
             var prescription = await service.AddPrescription(presc);
             return Results.Created("api/prescriptions", prescription);
+            }
+            catch (Exception e)
+            {
+                return Results.Problem(e.Message);
+            }
         });
     }
 }

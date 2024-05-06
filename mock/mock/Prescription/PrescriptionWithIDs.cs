@@ -7,4 +7,9 @@ public class PrescriptionWithIDs
     public int IdPatient { get; set; }
     public int IdDoctor { get; set; }
     public int IdPrescription { get; private set; }
+    
+    public void SetIdPrescription(int idPrescription)
+    {
+        IdPrescription = idPrescription;
+    }
 }

@@ -64,8 +64,8 @@ public class PrescriptionService : IPrescriptionService
 
         try
         {
-            var result = await command.ExecuteScalarAsync();
-            if (result != null && result != DBNull.Value)
+            var id = await command.ExecuteScalarAsync();
+            prescription.SetIdPrescription(Convert.ToInt32(id));
             await transaction.CommitAsync();
             return prescription;
         }
